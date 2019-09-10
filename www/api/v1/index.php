@@ -2,25 +2,23 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-require_once 'classes/Pokemon.php';
+require_once 'config.php';
+require_once 'classes/Profissao.php';
 
 class Rest{
 
     public static function open($requisicao){
-        $url = explode('/', $requisicao['url']);
-        $classe = 'Pokemon';
-        if(!empty($requisicao)){
-            $metodo = 'search';
-        }else{
-            $metodo = 'show';
-        }
-        var_dump($metodo);
+        $url = explode('/', $requisicao['args']);
         
+        $classe = $url[0];
+        $metodo = $url[1];
+        $arg[] = $url[2];
+
         try{
             if(class_exists($classe)){
-                if(method_exists($classe, $metodo)){
-                    $retorno = call_user_func_array(array(new $classe, $metodo), $requisicao );
-    
+                if(method_exists($classe, $metodo)){   
+                    $retorno = call_user_func_array(array(new $classe, $metodo), $arg );
+
                     return json_encode(array('status' => 'success', 'result' => $retorno));
                 }else{
                     return json_encode(array('status' => 'fail', 'result' => 'Metodo iniexistente!'));
@@ -32,6 +30,7 @@ class Rest{
             return json_encode(array('status' => 'fail', 'result' => $e->getMessage()));
         }
 
+        
     }
 }
 
