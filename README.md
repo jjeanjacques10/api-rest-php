@@ -2,7 +2,7 @@
 
 Api Rest para pesquisa de vagas automatizadas em um banco de dados MySQL, a aplicaço foi desenvolvida em PHP apenas.
 
-# Configuração da URL amigável no NGINX:
+## Configuração da URL amigável no NGINX:
 
 Para poder acessar a URL no formato REST é necessário inserir o seguinte código no NGINX:
 
@@ -21,7 +21,7 @@ location /api/v1/ {
 }
 ```
 
-# Para o XAMPP já temos o arquivo .htaccess
+## Para o XAMPP já temos o arquivo .htaccess
 
 ```
 RewriteEngine On
