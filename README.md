@@ -30,5 +30,28 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 ```
 
+# Estrutura da API
+
+## GET - /api/v1/profissao/
+
+Seleciona as 50 ocupações mais vistas na plataforma.
+
+
+## GET - /api/v1/profissao?nome=<ocupacao>
+
+Busca pelo nome da ocupação, passando como parâmetro GET nome mostrando o resutaldo em ordem alfabética.
+
+
+#### Params
+* nome   
+
+## GET - /api/v1/profissao/?CBO2002=<cbo2002>
+
+Faz o cadastro de uma nova visualização da ocupação, quando a ocupação já foi visualiza anteriormente pelo usuário não será cadastrado outra vez um view. Funciona exclusivamente via GET enviando o CBO2002 da ocupação.
+
+#### Params
+* cbo2002   
+
 Fonte dos dados - http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf
 Projeto base da API - https://www.youtube.com/watch?v=pa6QwLWG12Q
+
